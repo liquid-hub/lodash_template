@@ -37,7 +37,7 @@
 ```html
 <script type="text/template" id="items-template">
 <div class="items">
-  <% items.forEach(function(item) { %>
+  <% _.forEach(items, function(item) { %>
   <div class="item-title">
     <%- item.title %>
   </div>
@@ -96,7 +96,7 @@ $('.js-dinamic').html(compiled({ 'user': 'fred' }));
 ```HTML
 <script type="text/template" id="main-template">
   Цикл из массива items.
-  <% items.forEach(function(item, index) { %>
+  <% _.forEach(items, function(item, index) { %>
   <div class="item">
     (<%- index %>) <%- item %>
   </div>
@@ -124,7 +124,7 @@ $('.js-dinamic').html(compiled({ 'user': 'fred' }));
   </div>
 
   Использование кода в атрибутах.
-  <% items.forEach(function(item, index) { %>
+  <% _.forEach(items, function(item, index) { %>
   <div class="item" data-inex="<%- index %>">
     <%- item %>
   </div>
@@ -146,7 +146,7 @@ $('.js-dinamic').html(compiled({ 'user': 'fred' }));
 
 ```HTML
 <script type="text/template" id="products-template">
-<% products.forEach(function(item, product) { %>
+<% _.forEach(items, function(item, product) { %>
   <form class="card" data-product-id="<%= product.id %>">
     <a href="<%= product.url %>" class="card-image">
       <img src="<%= product.first_image.large_url %>">

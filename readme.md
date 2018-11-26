@@ -139,3 +139,53 @@ $('.js-dinamic').html(compiled({ 'user': 'fred' }));
 ```
 
 [🖥️ Пример на codepen.io](https://codepen.io/brainmurder/pen/GwGLGN)
+
+
+## Вывод массива товаров (Common.V2)
+
+```HTML
+<script type="text/template" id="products-template">
+<% products.forEach(function(item, product) { %>
+  <form class="card" data-product-id="<%= product.id %>">
+    <a href="<%= product.url %>" class="card-image">
+      <img src="<%= product.first_image.large_url %>">
+    </a>
+
+    <div class="card-title">
+      <a href="<%= product.url %>">
+        <%= product.title %>
+      </a>
+    </div>
+
+    <div class="card-prices">
+      <div class="card-price">
+        <%= Shop.money.format(product.variants[0].price) %>
+      </div>
+      <% if (product.variants[0].old_price){ %>
+        <div class="card-old_price">
+          <%= Shop.money.format(product.variants[0].old_price) %>
+        </div>
+        <% } %>
+      </div>
+
+      <div class="card-action">
+        <input type="hidden" name="variant_id" value="<%= product.variants[0].id %>" >
+
+        <div data-quantity>
+          <input type="text" name="quantity" value="1" />
+          <span data-quantity-change="-1">-</span>
+          <span data-quantity-change="1">+</span>
+        </div>
+      </div>
+
+      <div class="card-buy">
+        <% if (product.variants.size > 1){ %>
+          <a href="<%= product.url %>" class="btn">Подробнее</a>
+        <% }else{ %>
+          <button data-item-add class="btn" type="submit">В корзину</button>
+        <% } %>
+      </div>
+  </form>
+<% }); %>
+</script>
+```
